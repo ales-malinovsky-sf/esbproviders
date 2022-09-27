@@ -1,0 +1,18 @@
+{{- if .Values.istio.enabled -}}
+apiVersion: networking.istio.io/v1beta1
+kind: VirtualService
+metadata:
+  name: esbproviders-ra
+  namespace: {{ $.Values.namespace | default $.Release.Namespace }}
+spec:
+  hosts:
+    - {{ $.Values.istio.ra.hostname }}
+  gateways:
+    - {{ $.Values.istio.gateway }}
+  http:
+    - route:
+      - destination:
+          host: ra
+          port:
+           number: {{ .Values.ra.service.port }}
+{{- end }}

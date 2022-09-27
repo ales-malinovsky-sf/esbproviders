@@ -1,0 +1,12 @@
+dependencies:
+- name: ra
+  repository: file://ra/
+  version: 0.1.0
+- name: rfo
+  repository: file://rfo/
+  version: 0.1.0
+- name: rpo
+  repository: file://rpo/
+  version: 0.1.0
+digest: sha256:b4b33c99fba44878e3a43cae74f710341556d6a22f34fbb56ef23191fcd5f9db
+generated: "2022-09-27T12:52:57.503958174+02:00"

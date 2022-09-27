@@ -1,0 +1,20 @@
+apiVersion: v2
+name: esbproviders
+version: 0.0.1
+description: esbproviders module
+maintainers:
+  - name: 'Gratex International a.s.'
+    email: 'todo@email.com'
+dependencies:
+  - name: ra
+    # patch-level version match
+    version: 0.1.0
+    repository: 'file://ra/'
+  - name: rfo
+    # patch-level version match
+    version: 0.1.0
+    repository: 'file://rfo/'
+  - name: rpo
+    # patch-level version match
+    version: 0.1.0
+    repository: 'file://rpo/'
