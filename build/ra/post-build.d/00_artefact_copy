@@ -1,0 +1,14 @@
+#!/bin/bash -e
+set -euo pipefail
+
+echo "Copying build artefacts..."
+
+DEST_BASE_DIR="build/$CM_SUBPROJECT/image/image-data"
+DEST_DIR="$DEST_BASE_DIR/home/java/app"
+SRC_DIR="$CM_SUBPROJECT/target"
+
+# remove stale data
+find $DEST_DIR -name '*.jar' -delete
+# copy artefact
+mkdir -p "$DEST_DIR"
+cp -v "$SRC_DIR/$CM_SUBPROJECT-"*.jar "$DEST_DIR"

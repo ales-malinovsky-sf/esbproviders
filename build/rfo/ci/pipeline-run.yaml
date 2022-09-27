@@ -1,0 +1,33 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: esbproviders-rfo-build-
+spec:
+  pipelineRef:
+    name: esbproviders-rfo
+  serviceAccountName: pipeline
+  params:
+    - name: buildRevision
+      value: "dev/main"
+    - name: appGitUrl
+      value: "git@gitlab.rfosp.local:rfosp/esbproviders.git"
+  workspaces:
+    - name: app-source
+      persistentVolumeClaim:
+        claimName: esbproviders-rfo-workspace-pvc
+      subPath: source
+    - name: maven-m2-storage
+      persistentVolumeClaim:
+        claimName: esbproviders-rfo-workspace-pvc
+      subPath: m2
+    - name: kaniko-storage
+      persistentVolumeClaim:
+        claimName: esbproviders-rfo-workspace-pvc
+      subPath: kaniko
+    - name: dockerconfig
+      secret:
+        secretName: registry-harbor-infra.rfosp.local
+        items:
+          - key: .dockerconfigjson
+            path: config.json
