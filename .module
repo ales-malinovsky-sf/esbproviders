@@ -4,12 +4,12 @@
   type = chart
   path = charts
   semver = true
-[subproject "rfo"]
-  type = maven
-  path = rfo
 [subproject "ra"]
   type = maven
   path = ra
+[subproject "rfo"]
+  type = maven
+  path = rfo
 [subproject "rpo"]
   type = maven
   path = rpo

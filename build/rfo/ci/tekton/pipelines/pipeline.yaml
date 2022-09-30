@@ -5,7 +5,7 @@ metadata:
   labels:
     app.kubernetes.io/version: 0.0.1
   annotations:
-    tekton.dev/displayName: esbproviders-rfo build pipeline
+    tekton.dev/displayName: esbproviders rfo build pipeline
 spec:
   params:
   - name: appGitUrl
