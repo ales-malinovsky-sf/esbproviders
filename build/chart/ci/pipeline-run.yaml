@@ -1,0 +1,29 @@
+---
+apiVersion: tekton.dev/v1beta1
+kind: PipelineRun
+metadata:
+  generateName: esbproviders-chart-build-
+spec:
+  pipelineRef:
+    name: esbproviders-chart
+  serviceAccountName: pipeline
+  params:
+    - name: buildRevision
+      value: "dev/main"
+    - name: appGitUrl
+      value: "git@gitlab.rfosp.local:rfosp/esbproviders.git"
+  workspaces:
+    - name: app-source
+      persistentVolumeClaim:
+        claimName: esbproviders-chart-workspace-pvc
+      subPath: source
+    - name: helm-storage
+      persistentVolumeClaim:
+        claimName: esbproviders-chart-workspace-pvc
+      subPath: helm
+    - name: dockerconfig
+      secret:
+        secretName: registry-harbor-infra.rfosp.local
+        items:
+          - key: .dockerconfigjson
+            path: config.json
