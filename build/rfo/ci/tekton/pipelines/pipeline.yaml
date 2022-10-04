@@ -67,6 +67,8 @@ spec:
       value: $(tasks.pre-build.results.build-revision-tag)
     - name: build-revision
       value: $(tasks.pre-build.results.build-revision)
+    - name: image
+      value: library/build/maven:3.8-jdk17-2022.10.03-3
     - name: image-repository
       value: harbor-infra.rfosp.local
     when:
